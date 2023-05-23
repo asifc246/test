@@ -1,0 +1,23 @@
+{% extends 'admin_styled.html' %}
+{% block body %}
+<form action="/admin_add_item_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>Product</th>
+            <td><input type="text" name="product" placeholder="Product" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td><input type="text" name="price" placeholder="Price" class="form-control" required pattern="[o-9]{1,}"></td>
+        </tr>
+         <tr>
+            <th>Image</th>
+            <td><input type="file" name="photo" placeholder="Photo" class="form-control" required></td>
+        </tr>
+        <tr>
+            <td colspan="2"><div align="center"><input type="submit" value="Add" class="btn btn-primary"></div></td>
+        </tr>
+    </table>
+</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'admin_styled.html' %}
+{% block body %}
+<form action="/admin_edit_product_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table table-striped table-hover">
+        <input type="hidden" name="pid" value="{{ data.id }}"/>
+        <tr>
+            <td>Product</td>
+            <td><input type="text" name="product" placeholder="Product" value="{{ data.product }}" class="form-control" required></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><input type="text" name="price" placeholder="Price" value="{{ data.price }}" class="form-control" required pattern="[0-9]{1,}"></td>
+        </tr>
+         <tr>
+            <td>Image</td>
+            <td><img src="{{ data.photo }}" alt="product image" height="80px" width="80px"><br>
+                <input type="file" name="photo" placeholder="Photo" value="{{ data.photo }}" class="form-control"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Update" class="btn btn-primary"></td>
+        </tr>
+    </table>
+</form>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'styled.html' %}
+{% block body %}
+<form>
+{#    <table>#}
+{#        <tr>#}
+{#            <th>S.No</th>#}
+{#            <th>Product</th>#}
+{#            <th>Price</th>#}
+{#            <th>Image</th>#}
+{#            <th></th>#}
+{#            <th></th>#}
+{#        </tr>#}
+{#        {% for i in data %}#}
+{#        <tr>#}
+{#            <td>{{ forloop.counter }}</td>#}
+{#            <td>{{ i.product }}</td>#}
+{#            <td>{{ i.price }}</td>#}
+{#            <td><img src="{{ i.photo }}" alt="product image" height="100px" width="100px"></td>#}
+{#            <td><a href="/user_add_cart/{{ i.id }}">Add To Cart</a></td>#}
+{##}
+{#        </tr>#}
+{#        {% endfor %}#}
+{#    </table>#}
+{% csrf_token %}
+{% for i in data %}
+<div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">{{ i.product }}</div>
+        <div class="panel-body"><img src="{{ i.photo }}" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Price:&nbsp;{{ i.price }}&nbsp;&#8360;</div>
+        <div class="panel-footer"><a href="/user_add_cart/{{ i.id }}" class="btn btn-primary">Add To Cart</a></div>
+      </div>
+    </div>
+{% endfor %}
+</form>
+{% endblock %}
