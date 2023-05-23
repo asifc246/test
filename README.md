@@ -1,0 +1,2 @@
+# test
+Django machine test
